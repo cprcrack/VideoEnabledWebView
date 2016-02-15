@@ -71,12 +71,24 @@ public class ExampleActivity extends ActionBarActivity
             }
         });
         webView.setWebChromeClient(webChromeClient);
-
+        // Call private class InsideWebViewClient
+        webView.setWebViewClient(new InsideWebViewClient());
+        
         // Navigate anywhere you want, but consider that this classes have only been tested on YouTube's mobile site
         webView.loadUrl("http://m.youtube.com");
 
     }
 
+    private class InsideWebViewClient extends WebViewClient {
+        @Override
+        // Force links to be opened inside WebView and not in Default Browser
+        // Thanks http://stackoverflow.com/a/33681975/1815624
+        public boolean shouldOverrideUrlLoading(WebView view, String url) {
+            view.loadUrl(url);
+            return true;
+        }
+    }
+    
     @Override
     public void onBackPressed()
     {
