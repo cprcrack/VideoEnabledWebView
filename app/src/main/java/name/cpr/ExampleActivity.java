@@ -46,6 +46,7 @@ public class ExampleActivity extends ActionBarActivity
                 // Your code to handle the full-screen change, for example showing and hiding the title bar. Example:
                 if (fullscreen)
                 {
+                    getSupportActionBar().hide();
                     WindowManager.LayoutParams attrs = getWindow().getAttributes();
                     attrs.flags |= WindowManager.LayoutParams.FLAG_FULLSCREEN;
                     attrs.flags |= WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON;
@@ -58,6 +59,7 @@ public class ExampleActivity extends ActionBarActivity
                 }
                 else
                 {
+                    getSupportActionBar().show();
                     WindowManager.LayoutParams attrs = getWindow().getAttributes();
                     attrs.flags &= ~WindowManager.LayoutParams.FLAG_FULLSCREEN;
                     attrs.flags &= ~WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON;
