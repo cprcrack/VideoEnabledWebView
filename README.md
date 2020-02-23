@@ -1,5 +1,6 @@
-VideoEnabledWebView
-===================
+# VideoEnabledWebView
+
+[![ci][1]][2]
 
 Android's WebView and WebChromeClient class extensions that enable fully working, cross-device, HTML5 video support in Android 4.0.3 (API level 15) onwards. Actively maintained and tested up to Android 10 (API level 29) with its new Chromium webview.
 
@@ -33,3 +34,6 @@ Finally, you need to define all the views that you will be using in your layout 
 4. Remember to override your Activity's __onBackPressed()__ and pass the event to the VideoEnabledWebChromeClient. Follow the example in ExampleActivity.java.
 5. Remember to specify and/or programmatically inflate the __videoLayout__, __nonVideoLayout__, and, optionally, __loadingView__. Follow the example in ExampleActivity.java and the xml layout files in res/layout.
 6. If you are using __ProGuard__, remember to add the fully qualified name of the Javascript interface to the rules file: `-keepclassmembers class name.cpr.VideoEnabledWebView$JavascriptInterface { public *; }`
+
+[1]: https://github.com/cprcrack/VideoEnabledWebView/workflows/ci/badge.svg
+[2]: https://github.com/cprcrack/VideoEnabledWebView/actions
