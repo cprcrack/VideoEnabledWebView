@@ -1,10 +1,9 @@
 VideoEnabledWebView
 ===================
 
-Android's WebView and WebChromeClient class extensions that enable fully working, cross-device, HTML5 video support in Android 2.2 (API level 8) onwards. Actively maintained and tested up to Android 4.4 (API level 19) with its new Chromium webview.
+Android's WebView and WebChromeClient class extensions that enable fully working, cross-device, HTML5 video support in Android 4.0.3 (API level 15) onwards. Actively maintained and tested up to Android 10 (API level 29) with its new Chromium webview.
 
-Motivation
-----------
+## Motivation
 
 Android's default WebView doesn't work well with HTML5 videos (i.e. the _&lt;video&gt;_ tag). Unlike iOS's UIWebView, which is similar to a Safari tab with respect to video handling, Android's implementation is far from how a Chrome tab behaves. API level fragmentation and manufacturer customizations, which usually include video player related UI changes, only add up to the mess. Things that don't work consistently across devices include:
 - Videos not even playing.
@@ -16,8 +15,7 @@ Android's default WebView doesn't work well with HTML5 videos (i.e. the _&lt;vid
 
 VideoEnabledWebView and VideoEnabledWebChromeClient are two handy extension classes that come to help deal with these issues. I originally wrote them for my personal use, but they got a lot of attention in [StackOverflow](http://stackoverflow.com/a/16179544/423171), and that's the reason they are now here. Contributions are appreciated.
 
-How to use it
--------------
+## How to use it
 
 For a working example, download the whole repository and open it with __Android Studio__. Do not use the Open Project option, use __Import Project__.
 
@@ -27,12 +25,11 @@ VideoEnabledWebChromeClient can be used alone if you do not require the function
 
 Finally, you need to define all the views that you will be using in your layout files, and provide the relevant references in the classes' constructors.
 
-Common issues check-list
-------------------------
+## Common issues check-list
 
 1. Remember to declare the __internet permission__ in AndroidManifest.xml if you are using the WebView to access remote content: `<uses-permission android:name="android.permission.INTERNET" />`
 2. Remember to enable __hardware acceleration__ in AndroidManifest.xml for in-line videos to work in API level 11. The field will have no effect in earlier API levels: `android:hardwareAccelerated="true"`
 3. Remember to __initialize the VideoEnabledWebChromeClient__ and link it with the VideoEnabledWebView. Follow the example in ExampleActivity.java.
-4. Remember to override your Activity's __onBackPressed()__ and pass the event to the VideoEnabledWebChromeClient. Follow the example in ExampleActivity.java. 
+4. Remember to override your Activity's __onBackPressed()__ and pass the event to the VideoEnabledWebChromeClient. Follow the example in ExampleActivity.java.
 5. Remember to specify and/or programmatically inflate the __videoLayout__, __nonVideoLayout__, and, optionally, __loadingView__. Follow the example in ExampleActivity.java and the xml layout files in res/layout.
 6. If you are using __ProGuard__, remember to add the fully qualified name of the Javascript interface to the rules file: `-keepclassmembers class name.cpr.VideoEnabledWebView$JavascriptInterface { public *; }`
