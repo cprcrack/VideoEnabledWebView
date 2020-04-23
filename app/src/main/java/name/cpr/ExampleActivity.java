@@ -1,16 +1,16 @@
 package name.cpr;
 
 import android.os.Bundle;
-import android.support.v7.app.ActionBarActivity;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 
+import androidx.appcompat.app.AppCompatActivity;
 import cpr.name.videoenabledwebview.R;
 
-public class ExampleActivity extends ActionBarActivity
+public class ExampleActivity extends AppCompatActivity
 {
     private VideoEnabledWebView webView;
     private VideoEnabledWebChromeClient webChromeClient;
@@ -50,11 +50,7 @@ public class ExampleActivity extends ActionBarActivity
                     attrs.flags |= WindowManager.LayoutParams.FLAG_FULLSCREEN;
                     attrs.flags |= WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON;
                     getWindow().setAttributes(attrs);
-                    if (android.os.Build.VERSION.SDK_INT >= 14)
-                    {
-                        //noinspection all
-                        getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LOW_PROFILE);
-                    }
+                    getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LOW_PROFILE);
                 }
                 else
                 {
@@ -62,11 +58,7 @@ public class ExampleActivity extends ActionBarActivity
                     attrs.flags &= ~WindowManager.LayoutParams.FLAG_FULLSCREEN;
                     attrs.flags &= ~WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON;
                     getWindow().setAttributes(attrs);
-                    if (android.os.Build.VERSION.SDK_INT >= 14)
-                    {
-                        //noinspection all
-                        getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_VISIBLE);
-                    }
+                    getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_VISIBLE);
                 }
 
             }
@@ -74,9 +66,9 @@ public class ExampleActivity extends ActionBarActivity
         webView.setWebChromeClient(webChromeClient);
         // Call private class InsideWebViewClient
         webView.setWebViewClient(new InsideWebViewClient());
-        
+
         // Navigate anywhere you want, but consider that this classes have only been tested on YouTube's mobile site
-        webView.loadUrl("http://m.youtube.com");
+        webView.loadUrl("https://www.youtube.com/watch?v=HGZYtDZhOEQ");
 
     }
 
@@ -89,7 +81,7 @@ public class ExampleActivity extends ActionBarActivity
             return true;
         }
     }
-    
+
     @Override
     public void onBackPressed()
     {
